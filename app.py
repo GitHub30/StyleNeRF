@@ -178,9 +178,17 @@ pitch  = gr.inputs.Slider(minimum=-1, maximum=1, default=0, label="pitch")
 roll   = gr.inputs.Slider(minimum=-1, maximum=1, default=0, label="roll (optional, not suggested)")
 fov    = gr.inputs.Slider(minimum=9, maximum=15, default=12, label="fov")
 css = ".output_image {height: 40rem !important; width: 100% !important;}"
+
+title = "Interactive demo: StyleNeRF"
+description = "Demo for StyleNeRF, We propose StyleNeRF, a 3D-aware generative model for photo-realistic high-resolution image synthesis with high multi-view consistency, which can be trained on unstructured 2D images. To use it, simply change seeds"
+article = "<p style='text-align: center'><a href='https://arxiv.org/abs/2110.08985'>StyleNeRF: A Style-based 3D-Aware Generator for High-resolution Image Synthesis</a> | <a href='https://github.com/facebookresearch/StyleNeRF'>Github Repo</a></p>"
+
 gr.Interface(fn=f_synthesis,
              inputs=[model_name, model_find, render_option, trunc, seed1, seed2, mix1, mix2, yaw, pitch, roll, fov],
              outputs="image",
              layout='unaligned',
              css=css,
+             title=title,
+             description=description,
+             article=article,
              live=True).launch(share=True, debug=True)
